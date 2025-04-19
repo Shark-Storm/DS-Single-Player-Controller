@@ -2,10 +2,16 @@ let moveJoystick;  // Declare moveJoystick in a scope accessible globally
 
 // Send key press based on the button pressed
 function sendKey(key) {
-  fetch("https://your-app-name.herokuapp.com/press/" + key)
-  .then(response => response.text())
+  fetch("https://ds-single-player-controller.onrender.com/api/command", { // Use your Render backend URL
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ command: key }),
+  })
+  .then(response => response.json())
   .then(data => console.log(data))
-  .catch(error => console.error('Error:', error));
+  .catch(error => console.error("Error:", error));
 }
 
 // Joystick move simulation using dragging
