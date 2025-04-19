@@ -14,14 +14,26 @@ function startJoystickDrag(event) {
   const joystickCenter = document.querySelector('.joystick-center');
   const joystickRect = joystick.getBoundingClientRect();
   
-  // Calculate the initial mouse position relative to the joystick area
+  // Calculate the initial touch/mouse position relative to the joystick area
   const centerX = joystickRect.left + joystickRect.width / 2;
   const centerY = joystickRect.top + joystickRect.height / 2;
 
   // Handle the movement of the joystick center
   moveJoystick = function (event) {
-    let deltaX = event.clientX - centerX;
-    let deltaY = event.clientY - centerY;
+    let clientX, clientY;
+    
+    // For touch events
+    if (event.touches) {
+      clientX = event.touches[0].clientX;
+      clientY = event.touches[0].clientY;
+    } else {
+      // For mouse events
+      clientX = event.clientX;
+      clientY = event.clientY;
+    }
+
+    let deltaX = clientX - centerX;
+    let deltaY = clientY - centerY;
 
     // Limit the movement within the joystick boundary
     const maxDistance = joystickRect.width / 2;
@@ -40,18 +52,26 @@ function startJoystickDrag(event) {
   };
 
   // Add event listeners for dragging and stopping
-  document.addEventListener('mousemove', moveJoystick);
-  document.addEventListener('mouseup', stopJoystickDrag);
-  document.addEventListener('mouseleave', stopJoystickDrag);
-  document.addEventListener('click', stopJoystickDrag);
+  if (event.touches) {
+    document.addEventListener('touchmove', moveJoystick);
+    document.addEventListener('touchend', stopJoystickDrag);
+    document.addEventListener('touchcancel', stopJoystickDrag);
+  } else {
+    document.addEventListener('mousemove', moveJoystick);
+    document.addEventListener('mouseup', stopJoystickDrag);
+    document.addEventListener('mouseleave', stopJoystickDrag);
+  }
 }
 
 // Stop the joystick drag movement
 function stopJoystickDrag() {
+  // Remove event listeners for dragging
   document.removeEventListener('mousemove', moveJoystick);
   document.removeEventListener('mouseup', stopJoystickDrag);
   document.removeEventListener('mouseleave', stopJoystickDrag);
-  document.removeEventListener('click', stopJoystickDrag);
+  document.removeEventListener('touchmove', moveJoystick);
+  document.removeEventListener('touchend', stopJoystickDrag);
+  document.removeEventListener('touchcancel', stopJoystickDrag);
 
   // Reset the joystick center back to the original position when drag ends
   const joystickCenter = document.querySelector('.joystick-center');
@@ -78,3 +98,4 @@ function sendJoystickDirection(moveX, moveY) {
 
 // Add event listener to start dragging the joystick
 document.querySelector('.joystick-pad').addEventListener('mousedown', startJoystickDrag);
+document.querySelector('.joystick-pad').addEventListener('touchstart', startJoystickDrag);
