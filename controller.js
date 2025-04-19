@@ -96,6 +96,22 @@ function sendJoystickDirection(moveX, moveY) {
   }
 }
 
+// Prevent touch scrolling on the joystick
+const joystickPad = document.querySelector('.joystick-pad');
+
+joystickPad.addEventListener('touchstart', function(e) {
+  e.preventDefault();
+}, { passive: false });
+
+joystickPad.addEventListener('touchmove', function(e) {
+  e.preventDefault();
+}, { passive: false });
+
+joystickPad.addEventListener('touchend', function(e) {
+  e.preventDefault();
+}, { passive: false });
+
+
 // Add event listener to start dragging the joystick
 document.querySelector('.joystick-pad').addEventListener('mousedown', startJoystickDrag);
 document.querySelector('.joystick-pad').addEventListener('touchstart', startJoystickDrag);
