@@ -1,3 +1,4 @@
-Flask
-flask-cors
-pyautogui
+Flask==3.1.0
+flask-cors==5.0.1
+keyboard==0.13.5
+PyAutoGUI==0.9.54
