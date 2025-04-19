@@ -1,0 +1,65 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+}
+
+.controller {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.dpad {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dpad button {
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+}
+
+.joystick {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.joystick-pad {
+  width: 100px;
+  height: 100px;
+  background-color: #888;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.joystick-center {
+  width: 50px;
+  height: 50px;
+  background-color: #333;
+  border-radius: 50%;
+  position: absolute;
+  pointer-events: none;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.buttons button {
+  width: 80px;
+  height: 80px;
+  font-size: 20px;
+}
