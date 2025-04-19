@@ -26,7 +26,6 @@ pycparser==2.22
 pygame==2.6.1
 pyperclip==1.9.0
 pypng==0.20220715.0
-pywin32==309
 raylib==5.5.0.2
 requests==2.32.3
 scikit-learn==1.6.1
