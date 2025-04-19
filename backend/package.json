@@ -1,0 +1,13 @@
+{
+  "name": "ds-controller-backend",
+  "version": "1.0.0",
+  "main": "backend.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "body-parser": "^1.19.0",
+    "ws": "^8.8.0"
+  },
+  "scripts": {
+    "start": "node backend.js"
+  }
+}
