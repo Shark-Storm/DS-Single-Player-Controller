@@ -2,7 +2,7 @@ let moveJoystick;  // Declare moveJoystick in a scope accessible globally
 
 // Send key press based on the button pressed
 function sendKey(key) {
-  fetch("http://192.168.0.27:5000/press/" + key)
+  fetch("http://IP:5000/press/" + key)
     .then(response => response.text())
     .then(data => console.log(data))
     .catch(error => console.error('Error:', error));
