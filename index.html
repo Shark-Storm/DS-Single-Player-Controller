@@ -25,10 +25,10 @@
 
     <!-- A, B, X, Y Buttons -->
     <div class="buttons">
-      <button onclick="sendKey('a')">A</button>
-      <button onclick="sendKey('b')">B</button>
-      <button onclick="sendKey('x')">X</button>
-      <button onclick="sendKey('y')">Y</button>
+      <button onclick="sendKey('a')" class="controller-button" data-button-name="A">A</button>
+      <button onclick="sendKey('b')" class="controller-button" data-button-name="B">B</button>
+      <button onclick="sendKey('x')" class="controller-button" data-button-name="X">X</button>
+      <button onclick="sendKey('y')" class="controller-button" data-button-name="Y">Y</button>
     </div>
 
     <!-- Start, Select, L, R Buttons -->
@@ -40,5 +40,6 @@
     </div>
   </div>
   <script src="controller.js"></script>
+  <script src="send-message.js"></script>
 </body>
 </html>
